@@ -1,0 +1,3628 @@
+SNAPSHOT KODE SUMBER BACKEND EPICARE+
+
+================================================================================
+FOLDER: entity | FILE: Dokter.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "dokter")
+public class Dokter {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_dokter")
+    private Long idDokter;
+
+    @Column(name = "id_user", nullable = false, unique = true)
+    private Long idUser;
+
+    @Column(name = "nomor_sip", length = 50, unique = true)
+    private String nomorSip;
+
+    @Column(name = "spesialisasi", nullable = false, length = 100)
+    private String spesialisasi;
+
+    public Dokter() {
+    }
+
+    public Long getIdDokter() {
+        return idDokter;
+    }
+
+    public void setIdDokter(Long idDokter) {
+        this.idDokter = idDokter;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNomorSip() {
+        return nomorSip;
+    }
+
+    public void setNomorSip(String nomorSip) {
+        this.nomorSip = nomorSip;
+    }
+
+    public String getSpesialisasi() {
+        return spesialisasi;
+    }
+
+    public void setSpesialisasi(String spesialisasi) {
+        this.spesialisasi = spesialisasi;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: DokterFaskes.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "dokter_faskes")
+public class DokterFaskes {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_dokter_faskes")
+    private Long idDokterFaskes;
+
+    @Column(name = "id_dokter", nullable = false)
+    private Long idDokter;
+
+    @Column(name = "id_faskes", nullable = false)
+    private Long idFaskes;
+
+    @Column(name = "tanggal_mulai")
+    private LocalDate tanggalMulai;
+
+    @Column(name = "tanggal_selesai")
+    private LocalDate tanggalSelesai;
+
+    public DokterFaskes() {
+    }
+
+    public Long getIdDokterFaskes() {
+        return idDokterFaskes;
+    }
+
+    public void setIdDokterFaskes(Long idDokterFaskes) {
+        this.idDokterFaskes = idDokterFaskes;
+    }
+
+    public Long getIdDokter() {
+        return idDokter;
+    }
+
+    public void setIdDokter(Long idDokter) {
+        this.idDokter = idDokter;
+    }
+
+    public Long getIdFaskes() {
+        return idFaskes;
+    }
+
+    public void setIdFaskes(Long idFaskes) {
+        this.idFaskes = idFaskes;
+    }
+
+    public LocalDate getTanggalMulai() {
+        return tanggalMulai;
+    }
+
+    public void setTanggalMulai(LocalDate tanggalMulai) {
+        this.tanggalMulai = tanggalMulai;
+    }
+
+    public LocalDate getTanggalSelesai() {
+        return tanggalSelesai;
+    }
+
+    public void setTanggalSelesai(LocalDate tanggalSelesai) {
+        this.tanggalSelesai = tanggalSelesai;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: FasilitasKesehatan.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "fasilitas_kesehatan")
+public class FasilitasKesehatan {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_faskes")
+    private Long idFaskes;
+
+    @Column(name = "nama_faskes", nullable = false, length = 150)
+    private String namaFaskes;
+
+    @Column(name = "jenis_faskes", nullable = false, length = 30)
+    private String jenisFaskes;
+
+    @Column(name = "alamat", nullable = false, columnDefinition = "TEXT")
+    private String alamat;
+
+    @Column(name = "no_telepon", length = 13)
+    private String noTelepon;
+
+    public FasilitasKesehatan() {
+    }
+
+    public Long getIdFaskes() {
+        return idFaskes;
+    }
+
+    public void setIdFaskes(Long idFaskes) {
+        this.idFaskes = idFaskes;
+    }
+
+    public String getNamaFaskes() {
+        return namaFaskes;
+    }
+
+    public void setNamaFaskes(String namaFaskes) {
+        this.namaFaskes = namaFaskes;
+    }
+
+    public String getJenisFaskes() {
+        return jenisFaskes;
+    }
+
+    public void setJenisFaskes(String jenisFaskes) {
+        this.jenisFaskes = jenisFaskes;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getNoTelepon() {
+        return noTelepon;
+    }
+
+    public void setNoTelepon(String noTelepon) {
+        this.noTelepon = noTelepon;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Gejala.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "gejala")
+public class Gejala {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_gejala")
+    private Integer idGejala;
+
+    @Column(name = "nama_gejala", nullable = false, length = 100, unique = true)
+    private String namaGejala;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public Gejala() {
+    }
+
+    public Integer getIdGejala() {
+        return idGejala;
+    }
+
+    public void setIdGejala(Integer idGejala) {
+        this.idGejala = idGejala;
+    }
+
+    public String getNamaGejala() {
+        return namaGejala;
+    }
+
+    public void setNamaGejala(String namaGejala) {
+        this.namaGejala = namaGejala;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Kejang.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "kejang")
+public class Kejang {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_kejang")
+    private Long idKejang;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "tanggal_waktu", nullable = false)
+    private LocalDateTime tanggalWaktu;
+
+    @Column(name = "durasi", nullable = false, length = 20)
+    private String durasi;
+
+    @Column(name = "kondisi_sebelum", columnDefinition = "TEXT")
+    private String kondisiSebelum;
+
+    @Column(name = "kehilangan_kesadaran", nullable = false)
+    private Boolean kehilanganKesadaran;
+
+    @Column(name = "jatuh", nullable = false)
+    private Boolean jatuh;
+
+    @Column(name = "cedera", nullable = false)
+    private Boolean cedera;
+
+    @Column(name = "kejang_sesaat", nullable = false)
+    private Boolean kejangSesaat;
+
+    @Column(name = "kejang_berulang", nullable = false)
+    private Boolean kejangBerulang;
+
+    @Column(name = "kondisi_lainnya", columnDefinition = "TEXT")
+    private String kondisiLainnya;
+
+    @Column(name = "tingkat_keparahan", length = 20)
+    private String tingkatKeparahan;
+
+    @Column(name = "catatan_sistem", columnDefinition = "TEXT")
+    private String catatanSistem;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public Kejang() {
+    }
+
+    public Long getIdKejang() {
+        return idKejang;
+    }
+
+    public void setIdKejang(Long idKejang) {
+        this.idKejang = idKejang;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public LocalDateTime getTanggalWaktu() {
+        return tanggalWaktu;
+    }
+
+    public void setTanggalWaktu(LocalDateTime tanggalWaktu) {
+        this.tanggalWaktu = tanggalWaktu;
+    }
+
+    public String getDurasi() {
+        return durasi;
+    }
+
+    public void setDurasi(String durasi) {
+        this.durasi = durasi;
+    }
+
+    public String getKondisiSebelum() {
+        return kondisiSebelum;
+    }
+
+    public void setKondisiSebelum(String kondisiSebelum) {
+        this.kondisiSebelum = kondisiSebelum;
+    }
+
+    public Boolean getKehilanganKesadaran() {
+        return kehilanganKesadaran;
+    }
+
+    public void setKehilanganKesadaran(Boolean kehilanganKesadaran) {
+        this.kehilanganKesadaran = kehilanganKesadaran;
+    }
+
+    public Boolean getJatuh() {
+        return jatuh;
+    }
+
+    public void setJatuh(Boolean jatuh) {
+        this.jatuh = jatuh;
+    }
+
+    public Boolean getCedera() {
+        return cedera;
+    }
+
+    public void setCedera(Boolean cedera) {
+        this.cedera = cedera;
+    }
+
+    public Boolean getKejangSesaat() {
+        return kejangSesaat;
+    }
+
+    public void setKejangSesaat(Boolean kejangSesaat) {
+        this.kejangSesaat = kejangSesaat;
+    }
+
+    public Boolean getKejangBerulang() {
+        return kejangBerulang;
+    }
+
+    public void setKejangBerulang(Boolean kejangBerulang) {
+        this.kejangBerulang = kejangBerulang;
+    }
+
+    public String getKondisiLainnya() {
+        return kondisiLainnya;
+    }
+
+    public void setKondisiLainnya(String kondisiLainnya) {
+        this.kondisiLainnya = kondisiLainnya;
+    }
+
+    public String getTingkatKeparahan() {
+        return tingkatKeparahan;
+    }
+
+    public void setTingkatKeparahan(String tingkatKeparahan) {
+        this.tingkatKeparahan = tingkatKeparahan;
+    }
+
+    public String getCatatanSistem() {
+        return catatanSistem;
+    }
+
+    public void setCatatanSistem(String catatanSistem) {
+        this.catatanSistem = catatanSistem;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: KontakDarurat.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "kontak_darurat")
+public class KontakDarurat {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_kontak_darurat")
+    private Long idKontakDarurat;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "nama_kontak", nullable = false, length = 100)
+    private String namaKontak;
+
+    @Column(name = "no_hp", nullable = false, length = 13)
+    private String noHp;
+
+    @Column(name = "hubungan", nullable = false, length = 50)
+    private String hubungan;
+
+    @Column(name = "prioritas", nullable = false)
+    private Integer prioritas;
+
+    public KontakDarurat() {
+    }
+
+    public Long getIdKontakDarurat() {
+        return idKontakDarurat;
+    }
+
+    public void setIdKontakDarurat(Long idKontakDarurat) {
+        this.idKontakDarurat = idKontakDarurat;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public String getNamaKontak() {
+        return namaKontak;
+    }
+
+    public void setNamaKontak(String namaKontak) {
+        this.namaKontak = namaKontak;
+    }
+
+    public String getNoHp() {
+        return noHp;
+    }
+
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
+    }
+
+    public String getHubungan() {
+        return hubungan;
+    }
+
+    public void setHubungan(String hubungan) {
+        this.hubungan = hubungan;
+    }
+
+    public Integer getPrioritas() {
+        return prioritas;
+    }
+
+    public void setPrioritas(Integer prioritas) {
+        this.prioritas = prioritas;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: LogGejalaHarian.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "log_gejala_harian")
+public class LogGejalaHarian {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_log_gejala")
+    private Long idLogGejala;
+
+    @Column(name = "id_log", nullable = false)
+    private Long idLog;
+
+    @Column(name = "id_pemulihan_gejala", nullable = false)
+    private Long idPemulihanGejala;
+
+    @Column(name = "kondisi_hari_ini", nullable = false, length = 20)
+    private String kondisiHariIni;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    public LogGejalaHarian() {
+    }
+
+    public Long getIdLogGejala() {
+        return idLogGejala;
+    }
+
+    public void setIdLogGejala(Long idLogGejala) {
+        this.idLogGejala = idLogGejala;
+    }
+
+    public Long getIdLog() {
+        return idLog;
+    }
+
+    public void setIdLog(Long idLog) {
+        this.idLog = idLog;
+    }
+
+    public Long getIdPemulihanGejala() {
+        return idPemulihanGejala;
+    }
+
+    public void setIdPemulihanGejala(Long idPemulihanGejala) {
+        this.idPemulihanGejala = idPemulihanGejala;
+    }
+
+    public String getKondisiHariIni() {
+        return kondisiHariIni;
+    }
+
+    public void setKondisiHariIni(String kondisiHariIni) {
+        this.kondisiHariIni = kondisiHariIni;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: LogPemantauanHarian.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "log_pemantauan_harian")
+public class LogPemantauanHarian {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_log")
+    private Long idLog;
+
+    @Column(name = "id_pemulihan", nullable = false)
+    private Long idPemulihan;
+
+    @Column(name = "tanggal_log", nullable = false, insertable = false)
+    private LocalDateTime tanggalLog;
+
+    @Column(name = "gejala_tambahan", columnDefinition = "TEXT")
+    private String gejalaTambahan;
+
+    @Column(name = "tingkat_risiko", length = 20)
+    private String tingkatRisiko;
+
+    @Column(name = "rekomendasi", length = 30)
+    private String rekomendasi;
+
+    @Column(name = "pulih_total", nullable = false)
+    private Boolean pulihTotal;
+
+    @Column(name = "catatan_sistem", columnDefinition = "TEXT")
+    private String catatanSistem;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    public LogPemantauanHarian() {
+    }
+
+    public Long getIdLog() {
+        return idLog;
+    }
+
+    public void setIdLog(Long idLog) {
+        this.idLog = idLog;
+    }
+
+    public Long getIdPemulihan() {
+        return idPemulihan;
+    }
+
+    public void setIdPemulihan(Long idPemulihan) {
+        this.idPemulihan = idPemulihan;
+    }
+
+    public LocalDateTime getTanggalLog() {
+        return tanggalLog;
+    }
+
+    public void setTanggalLog(LocalDateTime tanggalLog) {
+        this.tanggalLog = tanggalLog;
+    }
+
+    public String getGejalaTambahan() {
+        return gejalaTambahan;
+    }
+
+    public void setGejalaTambahan(String gejalaTambahan) {
+        this.gejalaTambahan = gejalaTambahan;
+    }
+
+    public String getTingkatRisiko() {
+        return tingkatRisiko;
+    }
+
+    public void setTingkatRisiko(String tingkatRisiko) {
+        this.tingkatRisiko = tingkatRisiko;
+    }
+
+    public String getRekomendasi() {
+        return rekomendasi;
+    }
+
+    public void setRekomendasi(String rekomendasi) {
+        this.rekomendasi = rekomendasi;
+    }
+
+    public Boolean getPulihTotal() {
+        return pulihTotal;
+    }
+
+    public void setPulihTotal(Boolean pulihTotal) {
+        this.pulihTotal = pulihTotal;
+    }
+
+    public String getCatatanSistem() {
+        return catatanSistem;
+    }
+
+    public void setCatatanSistem(String catatanSistem) {
+        this.catatanSistem = catatanSistem;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Obat.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "obat")
+public class Obat {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_obat")
+    private Long idObat;
+
+    @Column(name = "nama_obat", nullable = false, length = 100, unique = true)
+    private String namaObat;
+
+    @Column(name = "bentuk_sediaan", nullable = false, length = 20)
+    private String bentukSediaan;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public Obat() {
+    }
+
+    public Long getIdObat() {
+        return idObat;
+    }
+
+    public void setIdObat(Long idObat) {
+        this.idObat = idObat;
+    }
+
+    public String getNamaObat() {
+        return namaObat;
+    }
+
+    public void setNamaObat(String namaObat) {
+        this.namaObat = namaObat;
+    }
+
+    public String getBentukSediaan() {
+        return bentukSediaan;
+    }
+
+    public void setBentukSediaan(String bentukSediaan) {
+        this.bentukSediaan = bentukSediaan;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Pasien.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pasien")
+public class Pasien {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pasien")
+    private Long idPasien;
+
+    @Column(name = "id_user", nullable = false, unique = true)
+    private Long idUser;
+
+    @Column(name = "no_bpjs", length = 13, unique = true)
+    private String noBpjs;
+
+    @Column(name = "tanggal_mulai_sakit")
+    private LocalDate tanggalMulaiSakit;
+
+    @Column(name = "tanggal_mulai_pengobatan")
+    private LocalDate tanggalMulaiPengobatan;
+
+    public Pasien() {
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNoBpjs() {
+        return noBpjs;
+    }
+
+    public void setNoBpjs(String noBpjs) {
+        this.noBpjs = noBpjs;
+    }
+
+    public LocalDate getTanggalMulaiSakit() {
+        return tanggalMulaiSakit;
+    }
+
+    public void setTanggalMulaiSakit(LocalDate tanggalMulaiSakit) {
+        this.tanggalMulaiSakit = tanggalMulaiSakit;
+    }
+
+    public LocalDate getTanggalMulaiPengobatan() {
+        return tanggalMulaiPengobatan;
+    }
+
+    public void setTanggalMulaiPengobatan(LocalDate tanggalMulaiPengobatan) {
+        this.tanggalMulaiPengobatan = tanggalMulaiPengobatan;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: PasienCaregiver.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pasien_caregiver")
+public class PasienCaregiver {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_caregiver")
+    private Long idCaregiver;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "id_user", nullable = false)
+    private Long idUser;
+
+    @Column(name = "hubungan", nullable = false, length = 50)
+    private String hubungan;
+
+    @Column(name = "tanggal_mulai")
+    private LocalDate tanggalMulai;
+
+    @Column(name = "tanggal_selesai")
+    private LocalDate tanggalSelesai;
+
+    @Column(name = "status", length = 20)
+    private String status;
+
+    public PasienCaregiver() {
+    }
+
+    public Long getIdCaregiver() {
+        return idCaregiver;
+    }
+
+    public void setIdCaregiver(Long idCaregiver) {
+        this.idCaregiver = idCaregiver;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getHubungan() {
+        return hubungan;
+    }
+
+    public void setHubungan(String hubungan) {
+        this.hubungan = hubungan;
+    }
+
+    public LocalDate getTanggalMulai() {
+        return tanggalMulai;
+    }
+
+    public void setTanggalMulai(LocalDate tanggalMulai) {
+        this.tanggalMulai = tanggalMulai;
+    }
+
+    public LocalDate getTanggalSelesai() {
+        return tanggalSelesai;
+    }
+
+    public void setTanggalSelesai(LocalDate tanggalSelesai) {
+        this.tanggalSelesai = tanggalSelesai;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: PasienDokter.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pasien_dokter")
+public class PasienDokter {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pasien_dokter")
+    private Long idPasienDokter;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "id_dokter", nullable = false)
+    private Long idDokter;
+
+    @Column(name = "tanggal_mulai")
+    private LocalDate tanggalMulai;
+
+    @Column(name = "tanggal_selesai")
+    private LocalDate tanggalSelesai;
+
+    public PasienDokter() {
+    }
+
+    public Long getIdPasienDokter() {
+        return idPasienDokter;
+    }
+
+    public void setIdPasienDokter(Long idPasienDokter) {
+        this.idPasienDokter = idPasienDokter;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public Long getIdDokter() {
+        return idDokter;
+    }
+
+    public void setIdDokter(Long idDokter) {
+        this.idDokter = idDokter;
+    }
+
+    public LocalDate getTanggalMulai() {
+        return tanggalMulai;
+    }
+
+    public void setTanggalMulai(LocalDate tanggalMulai) {
+        this.tanggalMulai = tanggalMulai;
+    }
+
+    public LocalDate getTanggalSelesai() {
+        return tanggalSelesai;
+    }
+
+    public void setTanggalSelesai(LocalDate tanggalSelesai) {
+        this.tanggalSelesai = tanggalSelesai;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: PasienPerawat.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "pasien_perawat")
+public class PasienPerawat {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pasien_perawat")
+    private Long idPasienPerawat;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "id_perawat", nullable = false)
+    private Long idPerawat;
+
+    @Column(name = "tanggal_mulai")
+    private LocalDate tanggalMulai;
+
+    @Column(name = "tanggal_selesai")
+    private LocalDate tanggalSelesai;
+
+    public PasienPerawat() {
+    }
+
+    public Long getIdPasienPerawat() {
+        return idPasienPerawat;
+    }
+
+    public void setIdPasienPerawat(Long idPasienPerawat) {
+        this.idPasienPerawat = idPasienPerawat;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public Long getIdPerawat() {
+        return idPerawat;
+    }
+
+    public void setIdPerawat(Long idPerawat) {
+        this.idPerawat = idPerawat;
+    }
+
+    public LocalDate getTanggalMulai() {
+        return tanggalMulai;
+    }
+
+    public void setTanggalMulai(LocalDate tanggalMulai) {
+        this.tanggalMulai = tanggalMulai;
+    }
+
+    public LocalDate getTanggalSelesai() {
+        return tanggalSelesai;
+    }
+
+    public void setTanggalSelesai(LocalDate tanggalSelesai) {
+        this.tanggalSelesai = tanggalSelesai;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: PemulihanGejala.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "pemulihan_gejala")
+public class PemulihanGejala {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pemulihan_gejala")
+    private Long idPemulihanGejala;
+
+    @Column(name = "id_pemulihan", nullable = false)
+    private Long idPemulihan;
+
+    @Column(name = "id_gejala", nullable = false)
+    private Integer idGejala;
+
+    @Column(name = "tingkat_awal", nullable = false, length = 50)
+    private String tingkatAwal;
+
+    @Column(name = "status_gejala", nullable = false, length = 20)
+    private String statusGejala;
+
+    @Column(name = "waktu_hilang")
+    private LocalDateTime waktuHilang;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public PemulihanGejala() {
+    }
+
+    public Long getIdPemulihanGejala() {
+        return idPemulihanGejala;
+    }
+
+    public void setIdPemulihanGejala(Long idPemulihanGejala) {
+        this.idPemulihanGejala = idPemulihanGejala;
+    }
+
+    public Long getIdPemulihan() {
+        return idPemulihan;
+    }
+
+    public void setIdPemulihan(Long idPemulihan) {
+        this.idPemulihan = idPemulihan;
+    }
+
+    public Integer getIdGejala() {
+        return idGejala;
+    }
+
+    public void setIdGejala(Integer idGejala) {
+        this.idGejala = idGejala;
+    }
+
+    public String getTingkatAwal() {
+        return tingkatAwal;
+    }
+
+    public void setTingkatAwal(String tingkatAwal) {
+        this.tingkatAwal = tingkatAwal;
+    }
+
+    public String getStatusGejala() {
+        return statusGejala;
+    }
+
+    public void setStatusGejala(String statusGejala) {
+        this.statusGejala = statusGejala;
+    }
+
+    public LocalDateTime getWaktuHilang() {
+        return waktuHilang;
+    }
+
+    public void setWaktuHilang(LocalDateTime waktuHilang) {
+        this.waktuHilang = waktuHilang;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: PemulihanPascaKejang.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "pemulihan_pasca_kejang")
+public class PemulihanPascaKejang {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_pemulihan")
+    private Long idPemulihan;
+
+    @Column(name = "id_kejang", nullable = false, unique = true)
+    private Long idKejang;
+
+    @Column(name = "kondisi_cedera", nullable = false, length = 100)
+    private String kondisiCedera;
+
+    @Column(name = "kecepatan_pemulihan", length = 20)
+    private String kecepatanPemulihan;
+
+    @Column(name = "tingkat_risiko", length = 20)
+    private String tingkatRisiko;
+
+    @Column(name = "rekomendasi", length = 30)
+    private String rekomendasi;
+
+    @Column(name = "status_pemulihan", nullable = false, length = 20)
+    private String statusPemulihan;
+
+    @Column(name = "catatan_sistem", columnDefinition = "TEXT")
+    private String catatanSistem;
+
+    @Column(name = "waktu_input_awal", nullable = false, insertable = false)
+    private LocalDateTime waktuInputAwal;
+
+    @Column(name = "waktu_pulih_total")
+    private LocalDateTime waktuPulihTotal;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public PemulihanPascaKejang() {
+    }
+
+    public Long getIdPemulihan() {
+        return idPemulihan;
+    }
+
+    public void setIdPemulihan(Long idPemulihan) {
+        this.idPemulihan = idPemulihan;
+    }
+
+    public Long getIdKejang() {
+        return idKejang;
+    }
+
+    public void setIdKejang(Long idKejang) {
+        this.idKejang = idKejang;
+    }
+
+    public String getKondisiCedera() {
+        return kondisiCedera;
+    }
+
+    public void setKondisiCedera(String kondisiCedera) {
+        this.kondisiCedera = kondisiCedera;
+    }
+
+    public String getKecepatanPemulihan() {
+        return kecepatanPemulihan;
+    }
+
+    public void setKecepatanPemulihan(String kecepatanPemulihan) {
+        this.kecepatanPemulihan = kecepatanPemulihan;
+    }
+
+    public String getTingkatRisiko() {
+        return tingkatRisiko;
+    }
+
+    public void setTingkatRisiko(String tingkatRisiko) {
+        this.tingkatRisiko = tingkatRisiko;
+    }
+
+    public String getRekomendasi() {
+        return rekomendasi;
+    }
+
+    public void setRekomendasi(String rekomendasi) {
+        this.rekomendasi = rekomendasi;
+    }
+
+    public String getStatusPemulihan() {
+        return statusPemulihan;
+    }
+
+    public void setStatusPemulihan(String statusPemulihan) {
+        this.statusPemulihan = statusPemulihan;
+    }
+
+    public String getCatatanSistem() {
+        return catatanSistem;
+    }
+
+    public void setCatatanSistem(String catatanSistem) {
+        this.catatanSistem = catatanSistem;
+    }
+
+    public LocalDateTime getWaktuInputAwal() {
+        return waktuInputAwal;
+    }
+
+    public void setWaktuInputAwal(LocalDateTime waktuInputAwal) {
+        this.waktuInputAwal = waktuInputAwal;
+    }
+
+    public LocalDateTime getWaktuPulihTotal() {
+        return waktuPulihTotal;
+    }
+
+    public void setWaktuPulihTotal(LocalDateTime waktuPulihTotal) {
+        this.waktuPulihTotal = waktuPulihTotal;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Perawat.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "perawat")
+public class Perawat {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_perawat")
+    private Long idPerawat;
+
+    @Column(name = "id_user", nullable = false, unique = true)
+    private Long idUser;
+
+    @Column(name = "nomor_str", length = 50, unique = true)
+    private String nomorStr;
+
+    public Perawat() {
+    }
+
+    public Long getIdPerawat() {
+        return idPerawat;
+    }
+
+    public void setIdPerawat(Long idPerawat) {
+        this.idPerawat = idPerawat;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNomorStr() {
+        return nomorStr;
+    }
+
+    public void setNomorStr(String nomorStr) {
+        this.nomorStr = nomorStr;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: Profile.java
+================================================================================
+package epicare_api.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "profiles")
+public class Profile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_profile")
+    private Long idProfile;
+
+    @Column(name = "id_user", nullable = false, unique = true)
+    private Long idUser;
+
+    @Column(name = "nik", length = 16)
+    private String nik;
+
+    @Column(name = "nama_lengkap", nullable = false, length = 100)
+    private String namaLengkap;
+
+    @Column(name = "tempat_lahir", length = 100)
+    private String tempatLahir;
+
+    @Column(name = "tanggal_lahir")
+    private LocalDate tanggalLahir;
+
+    @Column(name = "jenis_kelamin", length = 20)
+    private String jenisKelamin;
+
+    @Column(name = "golongan_darah", length = 10)
+    private String golonganDarah;
+
+    @Column(name = "alamat", columnDefinition = "TEXT")
+    private String alamat;
+
+    @Column(name = "foto_profil", length = 255)
+    private String fotoProfil;
+
+    public Profile() {
+    }
+
+    public Long getIdProfile() {
+        return idProfile;
+    }
+
+    public void setIdProfile(Long idProfile) {
+        this.idProfile = idProfile;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNik() {
+        return nik;
+    }
+
+    public void setNik(String nik) {
+        this.nik = nik;
+    }
+
+    public String getNamaLengkap() {
+        return namaLengkap;
+    }
+
+    public void setNamaLengkap(String namaLengkap) {
+        this.namaLengkap = namaLengkap;
+    }
+
+    public String getTempatLahir() {
+        return tempatLahir;
+    }
+
+    public void setTempatLahir(String tempatLahir) {
+        this.tempatLahir = tempatLahir;
+    }
+
+    public LocalDate getTanggalLahir() {
+        return tanggalLahir;
+    }
+
+    public void setTanggalLahir(LocalDate tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+
+    public String getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public void setJenisKelamin(String jenisKelamin) {
+        this.jenisKelamin = jenisKelamin;
+    }
+
+    public String getGolonganDarah() {
+        return golonganDarah;
+    }
+
+    public void setGolonganDarah(String golonganDarah) {
+        this.golonganDarah = golonganDarah;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getFotoProfil() {
+        return fotoProfil;
+    }
+
+    public void setFotoProfil(String fotoProfil) {
+        this.fotoProfil = fotoProfil;
+    }
+}
+
+================================================================================
+FOLDER: entity | FILE: Resep.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "resep")
+public class Resep {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_resep")
+    private Long idResep;
+
+    @Column(name = "id_pasien", nullable = false)
+    private Long idPasien;
+
+    @Column(name = "id_dokter", nullable = false)
+    private Long idDokter;
+
+    @Column(name = "tanggal_resep", nullable = false)
+    private LocalDate tanggalResep;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_resep", nullable = false)
+    private StatusResep statusResep = StatusResep.Aktif;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public enum StatusResep {
+        Aktif,
+        Selesai,
+        Dibatalkan
+    }
+
+    public Resep() {
+    }
+
+    public Long getIdResep() {
+        return idResep;
+    }
+
+    public void setIdResep(Long idResep) {
+        this.idResep = idResep;
+    }
+
+    public Long getIdPasien() {
+        return idPasien;
+    }
+
+    public void setIdPasien(Long idPasien) {
+        this.idPasien = idPasien;
+    }
+
+    public Long getIdDokter() {
+        return idDokter;
+    }
+
+    public void setIdDokter(Long idDokter) {
+        this.idDokter = idDokter;
+    }
+
+    public LocalDate getTanggalResep() {
+        return tanggalResep;
+    }
+
+    public void setTanggalResep(LocalDate tanggalResep) {
+        this.tanggalResep = tanggalResep;
+    }
+
+    public StatusResep getStatusResep() {
+        return statusResep;
+    }
+
+    public void setStatusResep(StatusResep statusResep) {
+        this.statusResep = statusResep;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}
+
+================================================================================
+FOLDER: entity | FILE: ResepDetail.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "resep_detail")
+public class ResepDetail {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_resep_detail")
+    private Long idResepDetail;
+
+    @Column(name = "id_resep", nullable = false)
+    private Long idResep;
+
+    @Column(name = "id_obat", nullable = false)
+    private Long idObat;
+
+    @Column(name = "dosis", nullable = false, length = 50)
+    private String dosis;
+
+    @Column(name = "frekuensi", nullable = false)
+    private Integer frekuensi = 1;
+
+    @Convert(converter = SatuanFrekuensiConverter.class)
+    @Column(name = "satuan_frekuensi", nullable = false)
+    private SatuanFrekuensi satuanFrekuensi =
+            SatuanFrekuensi.Kali_Sehari;
+
+    @Column(name = "waktu_pemberian", length = 100)
+    private String waktuPemberian;
+
+    @Column(name = "aturan_pakai", columnDefinition = "TEXT")
+    private String aturanPakai;
+
+    @Column(name = "catatan", columnDefinition = "TEXT")
+    private String catatan;
+
+    @Column(name = "tanggal_mulai", nullable = false)
+    private LocalDate tanggalMulai;
+
+    @Column(name = "tanggal_selesai")
+    private LocalDate tanggalSelesai;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public enum SatuanFrekuensi {
+        Kali_Sehari("Kali Sehari"),
+        Kali_Seminggu("Kali Seminggu"),
+        Sesuai_Kebutuhan("Sesuai Kebutuhan");
+
+        private final String nilaiDatabase;
+
+        SatuanFrekuensi(String nilaiDatabase) {
+            this.nilaiDatabase = nilaiDatabase;
+        }
+
+        public String getNilaiDatabase() {
+            return nilaiDatabase;
+        }
+
+        public static SatuanFrekuensi dariNilaiDatabase(String nilai) {
+            for (SatuanFrekuensi satuan : values()) {
+                if (satuan.nilaiDatabase.equals(nilai)) {
+                    return satuan;
+                }
+            }
+            throw new IllegalArgumentException(
+                "Satuan frekuensi tidak dikenal: " + nilai
+            );
+        }
+    }
+
+    public ResepDetail() {
+    }
+
+    public Long getIdResepDetail() {
+        return idResepDetail;
+    }
+
+    public void setIdResepDetail(Long idResepDetail) {
+        this.idResepDetail = idResepDetail;
+    }
+
+    public Long getIdResep() {
+        return idResep;
+    }
+
+    public void setIdResep(Long idResep) {
+        this.idResep = idResep;
+    }
+
+    public Long getIdObat() {
+        return idObat;
+    }
+
+    public void setIdObat(Long idObat) {
+        this.idObat = idObat;
+    }
+
+    public String getDosis() {
+        return dosis;
+    }
+
+    public void setDosis(String dosis) {
+        this.dosis = dosis;
+    }
+
+    public Integer getFrekuensi() {
+        return frekuensi;
+    }
+
+    public void setFrekuensi(Integer frekuensi) {
+        this.frekuensi = frekuensi;
+    }
+
+    public SatuanFrekuensi getSatuanFrekuensi() {
+        return satuanFrekuensi;
+    }
+
+    public void setSatuanFrekuensi(SatuanFrekuensi satuanFrekuensi) {
+        this.satuanFrekuensi = satuanFrekuensi;
+    }
+
+    public String getWaktuPemberian() {
+        return waktuPemberian;
+    }
+
+    public void setWaktuPemberian(String waktuPemberian) {
+        this.waktuPemberian = waktuPemberian;
+    }
+
+    public String getAturanPakai() {
+        return aturanPakai;
+    }
+
+    public void setAturanPakai(String aturanPakai) {
+        this.aturanPakai = aturanPakai;
+    }
+
+    public String getCatatan() {
+        return catatan;
+    }
+
+    public void setCatatan(String catatan) {
+        this.catatan = catatan;
+    }
+
+    public LocalDate getTanggalMulai() {
+        return tanggalMulai;
+    }
+
+    public void setTanggalMulai(LocalDate tanggalMulai) {
+        this.tanggalMulai = tanggalMulai;
+    }
+
+    public LocalDate getTanggalSelesai() {
+        return tanggalSelesai;
+    }
+
+    public void setTanggalSelesai(LocalDate tanggalSelesai) {
+        this.tanggalSelesai = tanggalSelesai;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}
+
+================================================================================
+FOLDER: entity | FILE: Role.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "roles")
+public class Role {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_role")
+    private Integer idRole;
+
+    @Column(name = "nama_role", nullable = false, length = 50, unique = true)
+    private String namaRole;
+
+    @Column(name = "deskripsi", length = 255)
+    private String deskripsi;
+
+    public Role() {
+    }
+
+    public Integer getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
+    }
+
+    public String getNamaRole() {
+        return namaRole;
+    }
+
+    public void setNamaRole(String namaRole) {
+        this.namaRole = namaRole;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: SatuanFrekuensiConverter.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
+
+@Converter
+public class SatuanFrekuensiConverter
+        implements AttributeConverter<ResepDetail.SatuanFrekuensi, String> {
+
+    @Override
+    public String convertToDatabaseColumn(
+            ResepDetail.SatuanFrekuensi satuan) {
+        return satuan == null ? null : satuan.getNilaiDatabase();
+    }
+
+    @Override
+    public ResepDetail.SatuanFrekuensi convertToEntityAttribute(
+            String nilai) {
+        return nilai == null ? null
+                : ResepDetail.SatuanFrekuensi.dariNilaiDatabase(nilai);
+    }
+}
+
+================================================================================
+FOLDER: entity | FILE: User.java
+================================================================================
+package epicare_api.entity;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private Long idUser;
+
+    @Column(name = "username", nullable = false, length = 50)
+    private String username;
+
+    @Column(name = "email", length = 100)
+    private String email;
+
+    @Column(name = "no_hp", nullable = false, length = 13)
+    private String noHp;
+
+    @Column(name = "password", nullable = false, length = 255)
+    private String password;
+
+    @Column(name = "status_akun", length = 30)
+    private String statusAkun;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", insertable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    public User() {
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNoHp() {
+        return noHp;
+    }
+
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getStatusAkun() {
+        return statusAkun;
+    }
+
+    public void setStatusAkun(String statusAkun) {
+        this.statusAkun = statusAkun;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+}
+
+================================================================================
+FOLDER: entity | FILE: UserRole.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "user_roles")
+public class UserRole {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_user_role")
+    private Long idUserRole;
+
+    @Column(name = "id_user", nullable = false)
+    private Long idUser;
+
+    @Column(name = "id_role", nullable = false)
+    private Integer idRole;
+
+    public UserRole() {
+    }
+
+    public Long getIdUserRole() {
+        return idUserRole;
+    }
+
+    public void setIdUserRole(Long idUserRole) {
+        this.idUserRole = idUserRole;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public Integer getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(Integer idRole) {
+        this.idRole = idRole;
+    }
+
+}
+
+================================================================================
+FOLDER: entity | FILE: VerifikatorBpjs.java
+================================================================================
+package epicare_api.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "verifikator_bpjs")
+public class VerifikatorBpjs {
+
+    @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_verifikator")
+    private Long idVerifikator;
+
+    @Column(name = "id_user", nullable = false, unique = true)
+    private Long idUser;
+
+    @Column(name = "nomor_identitas_petugas", length = 50, unique = true)
+    private String nomorIdentitasPetugas;
+
+    @Column(name = "kantor_bpjs", length = 150)
+    private String kantorBpjs;
+
+    public VerifikatorBpjs() {
+    }
+
+    public Long getIdVerifikator() {
+        return idVerifikator;
+    }
+
+    public void setIdVerifikator(Long idVerifikator) {
+        this.idVerifikator = idVerifikator;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getNomorIdentitasPetugas() {
+        return nomorIdentitasPetugas;
+    }
+
+    public void setNomorIdentitasPetugas(String nomorIdentitasPetugas) {
+        this.nomorIdentitasPetugas = nomorIdentitasPetugas;
+    }
+
+    public String getKantorBpjs() {
+        return kantorBpjs;
+    }
+
+    public void setKantorBpjs(String kantorBpjs) {
+        this.kantorBpjs = kantorBpjs;
+    }
+
+}
+
+================================================================================
+FOLDER: repository | FILE: DokterFaskesRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.DokterFaskes;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface DokterFaskesRepository
+        extends JpaRepository<DokterFaskes, Long> {
+
+    List<DokterFaskes> findByIdDokter(Long idDokter);
+    List<DokterFaskes> findByIdFaskes(Long idFaskes);
+}
+
+================================================================================
+FOLDER: repository | FILE: DokterRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Dokter;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface DokterRepository extends JpaRepository<Dokter, Long> {
+    Optional<Dokter> findByIdUser(Long idUser);
+}
+
+================================================================================
+FOLDER: repository | FILE: FasilitasKesehatanRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.FasilitasKesehatan;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FasilitasKesehatanRepository
+        extends JpaRepository<FasilitasKesehatan, Long> {
+}
+
+================================================================================
+FOLDER: repository | FILE: GejalaRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Gejala;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GejalaRepository extends JpaRepository<Gejala, Integer> {
+}
+
+================================================================================
+FOLDER: repository | FILE: KejangRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Kejang;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface KejangRepository extends JpaRepository<Kejang, Long> {
+    List<Kejang> findByIdPasien(Long idPasien);
+}
+
+================================================================================
+FOLDER: repository | FILE: KontakDaruratRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.KontakDarurat;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface KontakDaruratRepository
+        extends JpaRepository<KontakDarurat, Long> {
+
+    List<KontakDarurat> findByIdPasien(Long idPasien);
+}
+
+================================================================================
+FOLDER: repository | FILE: LogGejalaHarianRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.LogGejalaHarian;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface LogGejalaHarianRepository
+        extends JpaRepository<LogGejalaHarian, Long> {
+
+    List<LogGejalaHarian> findByIdLog(Long idLog);
+
+    List<LogGejalaHarian> findByIdPemulihanGejala(
+            Long idPemulihanGejala);
+}
+
+================================================================================
+FOLDER: repository | FILE: LogPemantauanHarianRepository.java
+================================================================================
+
+package epicare_api.repository;
+
+import epicare_api.entity.LogPemantauanHarian;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface LogPemantauanHarianRepository
+        extends JpaRepository<LogPemantauanHarian, Long> {
+
+    List<LogPemantauanHarian> findByIdPemulihan(Long idPemulihan);
+}
+
+================================================================================
+FOLDER: repository | FILE: ObatRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Obat;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ObatRepository extends JpaRepository<Obat, Long> {
+}
+
+================================================================================
+FOLDER: repository | FILE: PasienCaregiverRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.PasienCaregiver;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface PasienCaregiverRepository
+        extends JpaRepository<PasienCaregiver, Long> {
+
+    List<PasienCaregiver> findByIdPasien(Long idPasien);
+}
+
+================================================================================
+FOLDER: repository | FILE: PasienDokterRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.PasienDokter;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface PasienDokterRepository
+        extends JpaRepository<PasienDokter, Long> {
+
+    List<PasienDokter> findByIdPasien(Long idPasien);
+    List<PasienDokter> findByIdDokter(Long idDokter);
+}
+
+================================================================================
+FOLDER: repository | FILE: PasienPerawatRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.PasienPerawat;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface PasienPerawatRepository
+        extends JpaRepository<PasienPerawat, Long> {
+
+    List<PasienPerawat> findByIdPasien(Long idPasien);
+    List<PasienPerawat> findByIdPerawat(Long idPerawat);
+}
+
+================================================================================
+FOLDER: repository | FILE: PasienRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Pasien;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface PasienRepository extends JpaRepository<Pasien, Long> {
+    Optional<Pasien> findByIdUser(Long idUser);
+}
+
+================================================================================
+FOLDER: repository | FILE: PemulihanGejalaRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.PemulihanGejala;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PemulihanGejalaRepository
+        extends JpaRepository<PemulihanGejala, Long> {
+                
+List<PemulihanGejala> findByIdPemulihan(Long idPemulihan);
+
+}
+
+================================================================================
+FOLDER: repository | FILE: PemulihanPascaKejangRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.PemulihanPascaKejang;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PemulihanPascaKejangRepository
+        extends JpaRepository<PemulihanPascaKejang, Long> {
+}
+
+================================================================================
+FOLDER: repository | FILE: PerawatRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Perawat;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface PerawatRepository extends JpaRepository<Perawat, Long> {
+    Optional<Perawat> findByIdUser(Long idUser);
+}
+
+================================================================================
+FOLDER: repository | FILE: ProfileRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Profile;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface ProfileRepository extends JpaRepository<Profile, Long> {
+    Optional<Profile> findByIdUser(Long idUser);
+}
+
+================================================================================
+FOLDER: repository | FILE: ResepDetailRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.ResepDetail;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ResepDetailRepository
+        extends JpaRepository<ResepDetail, Long> {
+
+    List<ResepDetail> findByIdResep(Long idResep);
+
+    List<ResepDetail> findByIdObat(Long idObat);
+}
+
+================================================================================
+FOLDER: repository | FILE: ResepRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Resep;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ResepRepository extends JpaRepository<Resep, Long> {
+
+    List<Resep> findByIdPasien(Long idPasien);
+
+    List<Resep> findByIdDokter(Long idDokter);
+
+    List<Resep> findByStatusResep(Resep.StatusResep statusResep);
+}
+
+================================================================================
+FOLDER: repository | FILE: RoleRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+}
+
+================================================================================
+FOLDER: repository | FILE: UserRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
+}
+
+================================================================================
+FOLDER: repository | FILE: UserRoleRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.UserRole;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
+    List<UserRole> findByIdUser(Long idUser);
+    List<UserRole> findByIdRole(Integer idRole);
+}
+
+================================================================================
+FOLDER: repository | FILE: VerifikatorBpjsRepository.java
+================================================================================
+package epicare_api.repository;
+
+import epicare_api.entity.VerifikatorBpjs;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface VerifikatorBpjsRepository
+        extends JpaRepository<VerifikatorBpjs, Long> {
+
+    Optional<VerifikatorBpjs> findByIdUser(Long idUser);
+}
+
+================================================================================
+FOLDER: service | FILE: FasilitasKesehatanService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.FasilitasKesehatan;
+import epicare_api.repository.FasilitasKesehatanRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class FasilitasKesehatanService {
+
+    private final FasilitasKesehatanRepository faskesRepository;
+
+    public FasilitasKesehatanService(
+            FasilitasKesehatanRepository faskesRepository) {
+        this.faskesRepository = faskesRepository;
+    }
+
+    // Mengambil seluruh data fasilitas kesehatan
+    public List<FasilitasKesehatan> getAllFaskes() {
+        return faskesRepository.findAll();
+    }
+
+    // Mengambil fasilitas kesehatan berdasarkan ID
+    public Optional<FasilitasKesehatan> getFaskesById(Long idFaskes) {
+        return faskesRepository.findById(idFaskes);
+    }
+
+    // Menambahkan fasilitas kesehatan
+    public FasilitasKesehatan createFaskes(FasilitasKesehatan faskes) {
+        faskes.setIdFaskes(null);
+        return faskesRepository.save(faskes);
+    }
+
+    // Mengubah fasilitas kesehatan
+    public Optional<FasilitasKesehatan> updateFaskes(
+            Long idFaskes,
+            FasilitasKesehatan faskesBaru) {
+
+        return faskesRepository.findById(idFaskes)
+                .map(faskesLama -> {
+                    faskesLama.setNamaFaskes(faskesBaru.getNamaFaskes());
+                    faskesLama.setJenisFaskes(faskesBaru.getJenisFaskes());
+                    faskesLama.setAlamat(faskesBaru.getAlamat());
+                    faskesLama.setNoTelepon(faskesBaru.getNoTelepon());
+
+                    return faskesRepository.save(faskesLama);
+                });
+    }
+
+    // Menghapus fasilitas kesehatan
+    public boolean deleteFaskes(Long idFaskes) {
+        if (!faskesRepository.existsById(idFaskes)) {
+            return false;
+        }
+
+        faskesRepository.deleteById(idFaskes);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: GejalaService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.Gejala;
+import epicare_api.repository.GejalaRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class GejalaService {
+
+    private final GejalaRepository gejalaRepository;
+
+    public GejalaService(GejalaRepository gejalaRepository) {
+        this.gejalaRepository = gejalaRepository;
+    }
+
+    // Mengambil seluruh data gejala
+    public List<Gejala> getAllGejala() {
+        return gejalaRepository.findAll();
+    }
+
+    // Mengambil gejala berdasarkan ID
+    public Optional<Gejala> getGejalaById(Integer idGejala) {
+        return gejalaRepository.findById(idGejala);
+    }
+
+    // Menambahkan gejala
+    public Gejala createGejala(Gejala gejala) {
+        gejala.setIdGejala(null);
+        return gejalaRepository.save(gejala);
+    }
+
+    // Mengubah gejala
+    public Optional<Gejala> updateGejala(
+            Integer idGejala, Gejala gejalaBaru) {
+
+        return gejalaRepository.findById(idGejala)
+                .map(gejalaLama -> {
+                    gejalaLama.setNamaGejala(gejalaBaru.getNamaGejala());
+
+                    return gejalaRepository.save(gejalaLama);
+                });
+    }
+
+    // Menghapus gejala
+    public boolean deleteGejala(Integer idGejala) {
+        if (!gejalaRepository.existsById(idGejala)) {
+            return false;
+        }
+
+        gejalaRepository.deleteById(idGejala);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: KejangService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.Kejang;
+import epicare_api.repository.KejangRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class KejangService {
+
+    private final KejangRepository kejangRepository;
+
+    public KejangService(KejangRepository kejangRepository) {
+        this.kejangRepository = kejangRepository;
+    }
+
+    // Mengambil seluruh data kejang
+    public List<Kejang> getAllKejang() {
+        return kejangRepository.findAll();
+    }
+
+    // Mengambil data kejang berdasarkan ID
+    public Optional<Kejang> getKejangById(Long idKejang) {
+        return kejangRepository.findById(idKejang);
+    }
+
+    // Mengambil riwayat kejang berdasarkan ID pasien
+    public List<Kejang> getKejangByIdPasien(Long idPasien) {
+        return kejangRepository.findByIdPasien(idPasien);
+    }
+
+    // Menambahkan data kejang
+    public Kejang createKejang(Kejang kejang) {
+        // ID dibuat otomatis oleh database
+        kejang.setIdKejang(null);
+        return kejangRepository.save(kejang);
+    }
+
+    // Memperbarui data kejang
+    public Optional<Kejang> updateKejang(
+            Long idKejang, Kejang dataBaru) {
+
+        return kejangRepository.findById(idKejang)
+                .map(dataLama -> {
+                    dataLama.setIdPasien(dataBaru.getIdPasien());
+                    dataLama.setTanggalWaktu(dataBaru.getTanggalWaktu());
+                    dataLama.setDurasi(dataBaru.getDurasi());
+                    dataLama.setKondisiSebelum(dataBaru.getKondisiSebelum());
+                    dataLama.setKehilanganKesadaran(
+                            dataBaru.getKehilanganKesadaran());
+                    dataLama.setJatuh(dataBaru.getJatuh());
+                    dataLama.setCedera(dataBaru.getCedera());
+                    dataLama.setKejangSesaat(dataBaru.getKejangSesaat());
+                    dataLama.setKejangBerulang(dataBaru.getKejangBerulang());
+                    dataLama.setKondisiLainnya(dataBaru.getKondisiLainnya());
+                    dataLama.setTingkatKeparahan(
+                            dataBaru.getTingkatKeparahan());
+                    dataLama.setCatatanSistem(dataBaru.getCatatanSistem());
+
+                    return kejangRepository.save(dataLama);
+                });
+    }
+
+    // Menghapus data kejang
+    public boolean deleteKejang(Long idKejang) {
+        if (!kejangRepository.existsById(idKejang)) {
+            return false;
+        }
+
+        kejangRepository.deleteById(idKejang);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: KontakDaruratService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.KontakDarurat;
+import epicare_api.repository.KontakDaruratRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class KontakDaruratService {
+
+    private final KontakDaruratRepository kontakDaruratRepository;
+
+    public KontakDaruratService(
+            KontakDaruratRepository kontakDaruratRepository) {
+        this.kontakDaruratRepository = kontakDaruratRepository;
+    }
+
+    // Mengambil seluruh data kontak darurat
+    public List<KontakDarurat> getAllKontakDarurat() {
+        return kontakDaruratRepository.findAll();
+    }
+
+    // Mengambil kontak darurat berdasarkan ID
+    public Optional<KontakDarurat> getKontakDaruratById(
+            Long idKontakDarurat) {
+        return kontakDaruratRepository.findById(idKontakDarurat);
+    }
+
+    // Mengambil kontak darurat berdasarkan ID pasien
+    public List<KontakDarurat> getKontakDaruratByIdPasien(
+            Long idPasien) {
+        return kontakDaruratRepository.findByIdPasien(idPasien);
+    }
+
+    // Menambahkan kontak darurat
+    public KontakDarurat createKontakDarurat(
+            KontakDarurat kontakDarurat) {
+        kontakDarurat.setIdKontakDarurat(null);
+        return kontakDaruratRepository.save(kontakDarurat);
+    }
+
+    // Mengubah kontak darurat
+    public Optional<KontakDarurat> updateKontakDarurat(
+            Long idKontakDarurat,
+            KontakDarurat kontakBaru) {
+
+        return kontakDaruratRepository.findById(idKontakDarurat)
+                .map(kontakLama -> {
+                    kontakLama.setIdPasien(kontakBaru.getIdPasien());
+                    kontakLama.setNamaKontak(kontakBaru.getNamaKontak());
+                    kontakLama.setNoHp(kontakBaru.getNoHp());
+                    kontakLama.setHubungan(kontakBaru.getHubungan());
+                    kontakLama.setPrioritas(kontakBaru.getPrioritas());
+
+                    return kontakDaruratRepository.save(kontakLama);
+                });
+    }
+
+    // Menghapus kontak darurat
+    public boolean deleteKontakDarurat(Long idKontakDarurat) {
+        if (!kontakDaruratRepository.existsById(idKontakDarurat)) {
+            return false;
+        }
+
+        kontakDaruratRepository.deleteById(idKontakDarurat);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: ObatService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.Obat;
+import epicare_api.repository.ObatRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ObatService {
+
+    private final ObatRepository obatRepository;
+
+    public ObatService(ObatRepository obatRepository) {
+        this.obatRepository = obatRepository;
+    }
+
+    // Mengambil seluruh data obat
+    public List<Obat> getAllObat() {
+        return obatRepository.findAll();
+    }
+
+    // Mengambil data obat berdasarkan ID
+    public Optional<Obat> getObatById(Long idObat) {
+        return obatRepository.findById(idObat);
+    }
+
+    // Menambahkan data obat
+    public Obat createObat(Obat obat) {
+        obat.setIdObat(null);
+        return obatRepository.save(obat);
+    }
+
+    // Mengubah data obat
+    public Optional<Obat> updateObat(Long idObat, Obat obatBaru) {
+        return obatRepository.findById(idObat)
+                .map(obatLama -> {
+                    obatLama.setNamaObat(obatBaru.getNamaObat());
+                    obatLama.setBentukSediaan(obatBaru.getBentukSediaan());
+
+                    return obatRepository.save(obatLama);
+                });
+    }
+
+    // Menghapus data obat
+    public boolean deleteObat(Long idObat) {
+        if (!obatRepository.existsById(idObat)) {
+            return false;
+        }
+
+        obatRepository.deleteById(idObat);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: PemulihanGejalaService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.PemulihanGejala;
+import epicare_api.repository.PemulihanGejalaRepository;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class PemulihanGejalaService {
+
+    private final PemulihanGejalaRepository pemulihanGejalaRepository;
+
+    public PemulihanGejalaService(
+            PemulihanGejalaRepository pemulihanGejalaRepository) {
+        this.pemulihanGejalaRepository = pemulihanGejalaRepository;
+    }
+
+    // Mengambil seluruh data pemulihan gejala
+    public List<PemulihanGejala> getAllPemulihanGejala() {
+        return pemulihanGejalaRepository.findAll();
+    }
+
+    // Mengambil data berdasarkan ID
+    public Optional<PemulihanGejala> getPemulihanGejalaById(
+            Long idPemulihanGejala) {
+        return pemulihanGejalaRepository.findById(idPemulihanGejala);
+    }
+
+    // Mengambil data berdasarkan ID pemulihan
+    public List<PemulihanGejala> getByIdPemulihan(Long idPemulihan) {
+        return pemulihanGejalaRepository.findByIdPemulihan(idPemulihan);
+    }
+
+    // Menambahkan data pemulihan gejala
+    public PemulihanGejala createPemulihanGejala(
+            PemulihanGejala pemulihanGejala) {
+        pemulihanGejala.setIdPemulihanGejala(null);
+        return pemulihanGejalaRepository.save(pemulihanGejala);
+    }
+
+    // Mengubah data pemulihan gejala
+    public Optional<PemulihanGejala> updatePemulihanGejala(
+            Long idPemulihanGejala,
+            PemulihanGejala dataBaru) {
+
+        return pemulihanGejalaRepository.findById(idPemulihanGejala)
+                .map(dataLama -> {
+                    dataLama.setIdPemulihan(dataBaru.getIdPemulihan());
+                    dataLama.setIdGejala(dataBaru.getIdGejala());
+                    dataLama.setTingkatAwal(dataBaru.getTingkatAwal());
+                    dataLama.setStatusGejala(dataBaru.getStatusGejala());
+                    dataLama.setWaktuHilang(dataBaru.getWaktuHilang());
+
+                    return pemulihanGejalaRepository.save(dataLama);
+                });
+    }
+
+    // Menghapus data pemulihan gejala
+    public boolean deletePemulihanGejala(Long idPemulihanGejala) {
+        if (!pemulihanGejalaRepository.existsById(idPemulihanGejala)) {
+            return false;
+        }
+
+        pemulihanGejalaRepository.deleteById(idPemulihanGejala);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: service | FILE: PemulihanPascaKejangService.java
+================================================================================
+package epicare_api.service;
+
+import epicare_api.entity.PemulihanPascaKejang;
+import epicare_api.repository.PemulihanPascaKejangRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class PemulihanPascaKejangService {
+
+    private final PemulihanPascaKejangRepository repository;
+
+    public PemulihanPascaKejangService(
+            PemulihanPascaKejangRepository repository) {
+        this.repository = repository;
+    }
+
+    // Mengambil seluruh data pemulihan pasca kejang
+    public List<PemulihanPascaKejang> getAll() {
+        return repository.findAll();
+    }
+
+    // Mengambil data berdasarkan ID pemulihan
+    public Optional<PemulihanPascaKejang> getById(Long id) {
+        return repository.findById(id);
+    }
+
+    // Mengambil data berdasarkan ID kejang
+    public Optional<PemulihanPascaKejang> getByIdKejang(Long idKejang) {
+        return repository.findAll()
+                .stream()
+                .filter(data -> data.getIdKejang().equals(idKejang))
+                .findFirst();
+    }
+
+    // Menambahkan data pemulihan pasca kejang
+    public PemulihanPascaKejang create(
+            PemulihanPascaKejang data) {
+        data.setIdPemulihan(null);
+        return repository.save(data);
+    }
+
+    // Memperbarui data pemulihan pasca kejang
+    public Optional<PemulihanPascaKejang> update(
+            Long id, PemulihanPascaKejang dataBaru) {
+
+        return repository.findById(id).map(dataLama -> {
+            dataLama.setIdKejang(dataBaru.getIdKejang());
+            dataLama.setKondisiCedera(dataBaru.getKondisiCedera());
+            dataLama.setKecepatanPemulihan(
+                    dataBaru.getKecepatanPemulihan());
+            dataLama.setTingkatRisiko(dataBaru.getTingkatRisiko());
+            dataLama.setRekomendasi(dataBaru.getRekomendasi());
+            dataLama.setStatusPemulihan(dataBaru.getStatusPemulihan());
+            dataLama.setCatatanSistem(dataBaru.getCatatanSistem());
+            dataLama.setWaktuPulihTotal(dataBaru.getWaktuPulihTotal());
+
+            return repository.save(dataLama);
+        });
+    }
+
+    // Menghapus data pemulihan pasca kejang
+    public boolean delete(Long id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+
+        repository.deleteById(id);
+        return true;
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: FasilitasKesehatanController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.FasilitasKesehatan;
+import epicare_api.service.FasilitasKesehatanService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/faskes")
+public class FasilitasKesehatanController {
+
+    private final FasilitasKesehatanService faskesService;
+
+    public FasilitasKesehatanController(
+            FasilitasKesehatanService faskesService) {
+        this.faskesService = faskesService;
+    }
+
+    // GET: Mengambil seluruh fasilitas kesehatan
+    @GetMapping
+    public ResponseEntity<List<FasilitasKesehatan>> getAllFaskes() {
+        return ResponseEntity.ok(faskesService.getAllFaskes());
+    }
+
+    // GET: Mengambil fasilitas berdasarkan ID
+    @GetMapping("/{id}")
+    public ResponseEntity<FasilitasKesehatan> getFaskesById(
+            @PathVariable Long id) {
+
+        return faskesService.getFaskesById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // POST: Menambahkan fasilitas kesehatan
+    @PostMapping
+    public ResponseEntity<FasilitasKesehatan> createFaskes(
+            @RequestBody FasilitasKesehatan faskes) {
+
+        FasilitasKesehatan faskesBaru =
+                faskesService.createFaskes(faskes);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(faskesBaru);
+    }
+
+    // PUT: Mengubah fasilitas kesehatan
+    @PutMapping("/{id}")
+    public ResponseEntity<FasilitasKesehatan> updateFaskes(
+            @PathVariable Long id,
+            @RequestBody FasilitasKesehatan faskes) {
+
+        return faskesService.updateFaskes(id, faskes)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: Menghapus fasilitas kesehatan
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteFaskes(@PathVariable Long id) {
+        if (!faskesService.deleteFaskes(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: GejalaController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.Gejala;
+import epicare_api.service.GejalaService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/gejala")
+public class GejalaController {
+
+    private final GejalaService gejalaService;
+
+    public GejalaController(GejalaService gejalaService) {
+        this.gejalaService = gejalaService;
+    }
+
+    // GET: Mengambil seluruh data gejala
+    @GetMapping
+    public ResponseEntity<List<Gejala>> getAllGejala() {
+        return ResponseEntity.ok(gejalaService.getAllGejala());
+    }
+
+    // GET: Mengambil gejala berdasarkan ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Gejala> getGejalaById(
+            @PathVariable Integer id) {
+
+        return gejalaService.getGejalaById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // POST: Menambahkan gejala
+    @PostMapping
+    public ResponseEntity<Gejala> createGejala(
+            @RequestBody Gejala gejala) {
+
+        Gejala gejalaBaru = gejalaService.createGejala(gejala);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(gejalaBaru);
+    }
+
+    // PUT: Mengubah gejala
+    @PutMapping("/{id}")
+    public ResponseEntity<Gejala> updateGejala(
+            @PathVariable Integer id,
+            @RequestBody Gejala gejala) {
+
+        return gejalaService.updateGejala(id, gejala)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: Menghapus gejala
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteGejala(
+            @PathVariable Integer id) {
+
+        if (!gejalaService.deleteGejala(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: KejangController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.Kejang;
+import epicare_api.service.KejangService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/kejang")
+public class KejangController {
+
+    private final KejangService kejangService;
+
+    public KejangController(KejangService kejangService) {
+        this.kejangService = kejangService;
+    }
+
+    // GET seluruh data kejang
+    @GetMapping
+    public ResponseEntity<List<Kejang>> getAllKejang() {
+        return ResponseEntity.ok(kejangService.getAllKejang());
+    }
+
+    // GET data berdasarkan ID kejang
+    @GetMapping("/{id}")
+    public ResponseEntity<Kejang> getKejangById(
+            @PathVariable Long id) {
+
+        return kejangService.getKejangById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // GET riwayat kejang berdasarkan ID pasien
+    @GetMapping("/pasien/{idPasien}")
+    public ResponseEntity<List<Kejang>> getKejangByIdPasien(
+            @PathVariable Long idPasien) {
+
+        return ResponseEntity.ok(
+                kejangService.getKejangByIdPasien(idPasien));
+    }
+
+    // POST menambahkan data kejang
+    @PostMapping
+    public ResponseEntity<Kejang> createKejang(
+            @RequestBody Kejang kejang) {
+
+        Kejang hasil = kejangService.createKejang(kejang);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(hasil);
+    }
+
+    // PUT memperbarui data kejang
+    @PutMapping("/{id}")
+    public ResponseEntity<Kejang> updateKejang(
+            @PathVariable Long id,
+            @RequestBody Kejang dataBaru) {
+
+        return kejangService.updateKejang(id, dataBaru)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE menghapus data kejang
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteKejang(
+            @PathVariable Long id) {
+
+        if (!kejangService.deleteKejang(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: KontakDaruratController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.KontakDarurat;
+import epicare_api.service.KontakDaruratService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/kontak-darurat")
+public class KontakDaruratController {
+
+    private final KontakDaruratService kontakDaruratService;
+
+    public KontakDaruratController(
+            KontakDaruratService kontakDaruratService) {
+        this.kontakDaruratService = kontakDaruratService;
+    }
+
+    // GET: Mengambil seluruh kontak darurat
+    @GetMapping
+    public ResponseEntity<List<KontakDarurat>> getAllKontakDarurat() {
+        return ResponseEntity.ok(
+                kontakDaruratService.getAllKontakDarurat());
+    }
+
+    // GET: Mengambil kontak berdasarkan ID
+    @GetMapping("/{id}")
+    public ResponseEntity<KontakDarurat> getKontakDaruratById(
+            @PathVariable Long id) {
+
+        return kontakDaruratService.getKontakDaruratById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // GET: Mengambil kontak berdasarkan ID pasien
+    @GetMapping("/pasien/{idPasien}")
+    public ResponseEntity<List<KontakDarurat>>
+            getKontakDaruratByIdPasien(
+                    @PathVariable Long idPasien) {
+
+        return ResponseEntity.ok(
+                kontakDaruratService
+                        .getKontakDaruratByIdPasien(idPasien));
+    }
+
+    // POST: Menambahkan kontak darurat
+    @PostMapping
+    public ResponseEntity<KontakDarurat> createKontakDarurat(
+            @RequestBody KontakDarurat kontakDarurat) {
+
+        KontakDarurat kontakBaru =
+                kontakDaruratService.createKontakDarurat(kontakDarurat);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(kontakBaru);
+    }
+
+    // PUT: Mengubah kontak darurat
+    @PutMapping("/{id}")
+    public ResponseEntity<KontakDarurat> updateKontakDarurat(
+            @PathVariable Long id,
+            @RequestBody KontakDarurat kontakDarurat) {
+
+        return kontakDaruratService
+                .updateKontakDarurat(id, kontakDarurat)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: Menghapus kontak darurat
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteKontakDarurat(
+            @PathVariable Long id) {
+
+        if (!kontakDaruratService.deleteKontakDarurat(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: ObatController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.Obat;
+import epicare_api.service.ObatService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/obat")
+public class ObatController {
+
+    private final ObatService obatService;
+
+    public ObatController(ObatService obatService) {
+        this.obatService = obatService;
+    }
+
+    // GET: Mengambil seluruh data obat
+    @GetMapping
+    public ResponseEntity<List<Obat>> getAllObat() {
+        return ResponseEntity.ok(obatService.getAllObat());
+    }
+
+    // GET: Mengambil obat berdasarkan ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Obat> getObatById(@PathVariable Long id) {
+        return obatService.getObatById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // POST: Menambahkan obat
+    @PostMapping
+    public ResponseEntity<Obat> createObat(@RequestBody Obat obat) {
+        Obat obatBaru = obatService.createObat(obat);
+        return ResponseEntity.status(HttpStatus.CREATED).body(obatBaru);
+    }
+
+    // PUT: Mengubah obat
+    @PutMapping("/{id}")
+    public ResponseEntity<Obat> updateObat(
+            @PathVariable Long id,
+            @RequestBody Obat obat) {
+
+        return obatService.updateObat(id, obat)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: Menghapus obat
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteObat(@PathVariable Long id) {
+        if (!obatService.deleteObat(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: PemulihanGejalaController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.PemulihanGejala;
+import epicare_api.service.PemulihanGejalaService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/pemulihan-gejala")
+public class PemulihanGejalaController {
+
+    private final PemulihanGejalaService pemulihanGejalaService;
+
+    public PemulihanGejalaController(
+            PemulihanGejalaService pemulihanGejalaService) {
+        this.pemulihanGejalaService = pemulihanGejalaService;
+    }
+
+    // GET: Mengambil seluruh data
+    @GetMapping
+    public ResponseEntity<List<PemulihanGejala>> getAll() {
+        return ResponseEntity.ok(
+                pemulihanGejalaService.getAllPemulihanGejala());
+    }
+
+    // GET: Mengambil data berdasarkan ID
+    @GetMapping("/{id}")
+    public ResponseEntity<PemulihanGejala> getById(
+            @PathVariable Long id) {
+        return pemulihanGejalaService.getPemulihanGejalaById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // GET: Mengambil data berdasarkan ID pemulihan
+    @GetMapping("/pemulihan/{idPemulihan}")
+    public ResponseEntity<List<PemulihanGejala>> getByIdPemulihan(
+            @PathVariable Long idPemulihan) {
+        return ResponseEntity.ok(
+                pemulihanGejalaService.getByIdPemulihan(idPemulihan));
+    }
+
+    // POST: Menambahkan data
+    @PostMapping
+    public ResponseEntity<PemulihanGejala> create(
+            @RequestBody PemulihanGejala data) {
+        PemulihanGejala hasil =
+                pemulihanGejalaService.createPemulihanGejala(data);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(hasil);
+    }
+
+    // PUT: Mengubah data
+    @PutMapping("/{id}")
+    public ResponseEntity<PemulihanGejala> update(
+            @PathVariable Long id,
+            @RequestBody PemulihanGejala data) {
+        return pemulihanGejalaService.updatePemulihanGejala(id, data)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: Menghapus data
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!pemulihanGejalaService.deletePemulihanGejala(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: PemulihanPascaKejangController.java
+================================================================================
+package epicare_api.controller;
+
+import epicare_api.entity.PemulihanPascaKejang;
+import epicare_api.service.PemulihanPascaKejangService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/pemulihan-pasca-kejang")
+public class PemulihanPascaKejangController {
+
+    private final PemulihanPascaKejangService service;
+
+    public PemulihanPascaKejangController(
+            PemulihanPascaKejangService service) {
+        this.service = service;
+    }
+
+    // GET: seluruh data
+    @GetMapping
+    public ResponseEntity<List<PemulihanPascaKejang>> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+    // GET: berdasarkan ID pemulihan
+    @GetMapping("/{id}")
+    public ResponseEntity<PemulihanPascaKejang> getById(
+            @PathVariable Long id) {
+        return service.getById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // GET: berdasarkan ID kejang
+    @GetMapping("/kejang/{idKejang}")
+    public ResponseEntity<PemulihanPascaKejang> getByIdKejang(
+            @PathVariable Long idKejang) {
+        return service.getByIdKejang(idKejang)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // POST: menambahkan data
+    @PostMapping
+    public ResponseEntity<PemulihanPascaKejang> create(
+            @RequestBody PemulihanPascaKejang data) {
+
+        PemulihanPascaKejang hasil = service.create(data);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(hasil);
+    }
+
+    // PUT: memperbarui data
+    @PutMapping("/{id}")
+    public ResponseEntity<PemulihanPascaKejang> update(
+            @PathVariable Long id,
+            @RequestBody PemulihanPascaKejang data) {
+
+        return service.update(id, data)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // DELETE: menghapus data
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (!service.delete(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+    }
+}
+
+================================================================================
+FOLDER: controller | FILE: StatusController.java
+================================================================================
+package epicare_api.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+
+@RestController
+public class StatusController {
+
+    @GetMapping("/api/status")
+    public Map<String, String> getStatus() {
+        return Map.of(
+            "aplikasi", "EpiCare+ Web API",
+            "status", "berjalan"
+        );
+    }
+}
